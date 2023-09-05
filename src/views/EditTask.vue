@@ -33,7 +33,7 @@ export default {
       details: "",
       due_date: 0,
       priority: "",
-      uri: "http://localhost:3000/tasks/" + this.id,
+      uri: `${process.env.BACKEND_URL}/tasks/` + this.id,
       payload: {},
     };
   },

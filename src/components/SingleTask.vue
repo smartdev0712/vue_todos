@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       showDetails: false,
-      urlThis: "http://localhost:3000/tasks/" + this.task.id,
+      urlThis: `${process.env.BACKEND_URL}/tasks/` + this.task.id,
     };
   },
   methods: {

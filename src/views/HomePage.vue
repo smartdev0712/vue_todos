@@ -24,7 +24,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://localhost:3000/tasks")
+    fetch(`${process.env.BACKEND_URL}/tasks`)
       .then((res) => res.json())
       .then((data) => (this.tasks = data))
       .catch((err) => console.log(err.message));

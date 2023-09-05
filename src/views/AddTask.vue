@@ -39,11 +39,11 @@ export default {
       let newTask = {
         title: this.title,
         details: this.details,
-        due_date: this.due_date,
+        due_date: new Date(this.due_date).getTime(),
         priority: this.priority,
       };
       console.log("new task payload", newTask);
-      fetch("http://localhost:3000/tasks", {
+      fetch(`${process.env.BACKEND_URL}/tasks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
