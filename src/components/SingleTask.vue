@@ -58,11 +58,10 @@ export default {
 }
 .task {
   margin: 20px auto;
-  background-color: aliceblue;
+  background-color: rgba(128, 128, 128, 0.76);
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
-  border-left: 10px solid red;
 }
 h3 {
   cursor: pointer;
@@ -77,10 +76,10 @@ h3 {
   margin-left: 10px;
   font-weight: bold;
   cursor: pointer;
-  color: #bbb;
+  color: #d3515b;
 }
 .material-icons:hover {
-  color: #777;
+  color: #f30b0b;
 }
 .date {
   font-size: small;
