@@ -39,6 +39,7 @@ export default {
       let newTask = {
         title: this.title,
         details: this.details,
+        created_date: new Date().getTime(),
         due_date: new Date(this.due_date).getTime(),
         priority: this.priority,
       };

@@ -20,6 +20,10 @@
     </div>
     <div v-if="showDetails" class="details">
       <p>{{ task.details }}</p>
+      <br />
+      <p>Created at {{ new Date(task.created_date) }}</p>
+      <br />
+      <p>Due at {{ new Date(task.due_date) }}</p>
     </div>
   </div>
 </template>
