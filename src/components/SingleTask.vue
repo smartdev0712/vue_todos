@@ -23,8 +23,10 @@
     </div>
     <div v-if="showDetails" class="details">
       <p>{{ task.details }}</p>
-      <p class="date">Created at {{ new Date(parseInt(task.created_date)) }}</p>
-      <p class="date">Due at {{ new Date(parseInt(task.due_date)) }}</p>
+      <p class="date">
+        Created at {{ this.getUTCDate(parseInt(task.created_date)) }}
+      </p>
+      <p class="date">Due at {{ this.getUTCDate(parseInt(task.due_date)) }}</p>
     </div>
   </div>
 </template>
@@ -45,6 +47,16 @@ export default {
     taskDelete() {
       fetch(this.urlThis, { method: "DELETE" }).then(() =>
         this.$emit("delete", this.task.id)
+      );
+    },
+    getUTCDate(data) {
+      const date = new Date(data);
+      return (
+        date.getUTCFullYear() +
+        "-" +
+        ("0" + (date.getUTCMonth() + 1)).slice(-2) +
+        "-" +
+        ("0" + date.getUTCDate()).slice(-2)
       );
     },
   },

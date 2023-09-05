@@ -66,11 +66,11 @@ export default {
     getDate(data) {
       const date = new Date(data);
       return (
-        date.getFullYear() +
+        date.getUTCFullYear() +
         "-" +
-        ("0" + (date.getMonth() + 1)).slice(-2) +
+        ("0" + (date.getUTCMonth() + 1)).slice(-2) +
         "-" +
-        ("0" + date.getDate()).slice(-2)
+        ("0" + date.getUTCDate()).slice(-2)
       );
     },
   },
