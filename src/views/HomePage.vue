@@ -20,11 +20,11 @@ export default {
     return {
       tasks: [],
       current: "all",
-      date: "",
+      date: ""
     };
   },
   mounted() {
-    fetch(`${process.env.BACKEND_URL}/tasks`)
+    fetch(this.backend_url + "/tasks")
       .then((res) => res.json())
       .then((data) => (this.tasks = data))
       .catch((err) => console.log(err.message));

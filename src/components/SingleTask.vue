@@ -4,26 +4,27 @@
       <h3
         @click="showDetail"
         :style="[
-          task.priority === 'low' ? { color: 'green' } : { color: 'red' },
-          { color: 'yellow' },
+          task.priority === 'Low'
+            ? { color: 'green' }
+            : task.priority === 'Medium'
+            ? { color: 'yellow' }
+            : { color: 'red' },
         ]"
       >
         {{ task.title }}
       </h3>
       <div class="icons">
-        <router-link :to="{ name: 'Edittask', params: { id: task.id } }"
+        <span>{{ task.priority }}</span>
+        <router-link :to="{ name: 'EditTask', params: { id: task.id } }"
           ><span class="material-icons">edit</span></router-link
         >
         <span @click="taskDelete" class="material-icons">delete</span>
-        <span>{{ task.priority }}</span>
       </div>
     </div>
     <div v-if="showDetails" class="details">
       <p>{{ task.details }}</p>
-      <br />
-      <p>Created at {{ new Date(task.created_date) }}</p>
-      <br />
-      <p>Due at {{ new Date(task.due_date) }}</p>
+      <p class="date">Created at {{ new Date(parseInt(task.created_date)) }}</p>
+      <p class="date">Due at {{ new Date(parseInt(task.due_date)) }}</p>
     </div>
   </div>
 </template>
@@ -34,7 +35,7 @@ export default {
   data() {
     return {
       showDetails: false,
-      urlThis: `${process.env.BACKEND_URL}/tasks/` + this.task.id,
+      urlThis: `${this.backend_url}/tasks/` + this.task.id,
     };
   },
   methods: {
@@ -51,9 +52,13 @@ export default {
 </script>
 
 <style>
+.icons {
+  display: flex;
+  align-items: center;
+}
 .task {
   margin: 20px auto;
-  background-color: white;
+  background-color: aliceblue;
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
@@ -76,5 +81,9 @@ h3 {
 }
 .material-icons:hover {
   color: #777;
+}
+.date {
+  font-size: small;
+  color: black;
 }
 </style>

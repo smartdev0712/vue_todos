@@ -43,13 +43,12 @@ export default {
         due_date: new Date(this.due_date).getTime(),
         priority: this.priority,
       };
-      console.log("new task payload", newTask);
-      fetch(`${process.env.BACKEND_URL}/tasks`, {
+      fetch(`${this.backend_url}/tasks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
       })
-        .then(() => this.$router.push("/homePage"))
+        .then(() => this.$router.push("/home"))
         .catch((err) => console.log(err.name));
     },
   },

@@ -38,9 +38,4 @@ export default {};
 p {
   font-size: medium;
 }
-/* a.router-link-active {
-  border-bottom: 3px solid indigo;
-  padding-bottom: 4px;
-  color: darkslateblue;
-} */
 </style>

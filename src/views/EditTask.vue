@@ -33,7 +33,7 @@ export default {
       details: "",
       due_date: 0,
       priority: "",
-      uri: `${process.env.BACKEND_URL}/tasks/` + this.id,
+      uri: `${this.backend_url}/tasks/` + this.id,
       payload: {},
     };
   },
@@ -43,7 +43,7 @@ export default {
       .then((data) => {
         this.title = data.title;
         this.details = data.details;
-        this.due_date = data.due_date;
+        this.due_date = this.getDate(parseInt(data.due_date));
         this.priority = data.priority;
       });
   },
@@ -52,17 +52,26 @@ export default {
       this.payload = {
         title: this.title,
         details: this.details,
-        due_date: this.due_date,
+        due_date: new Date(this.due_date).getTime(),
         priority: this.priority,
       };
-      console.log("payload for update", this.payload);
       fetch(this.uri, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(this.payload),
       })
-        .then(() => this.$router.push("/HomePage"))
+        .then(() => this.$router.push("/home"))
         .catch((err) => console.log(err.message));
+    },
+    getDate(data) {
+      const date = new Date(data);
+      return (
+        date.getFullYear() +
+        "-" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "-" +
+        ("0" + date.getDate()).slice(-2)
+      );
     },
   },
 };
