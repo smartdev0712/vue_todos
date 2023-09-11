@@ -1,5 +1,5 @@
 <template>
-  <div class="homePage">
+  <div class="home-page">
     <FilterNav @filterChange="current = $event" :current="current"></FilterNav>
     <div v-if="tasks.length">
       <div v-for="task in filteredTasks" :key="task.id">
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style>
-.homePage {
+.home-page {
   padding: 30px;
 }
 </style>

@@ -60,7 +60,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(this.payload),
       })
-        .then(() => this.$router.push("/home"))
+        .then(() => this.$router.push("/"))
         .catch((err) => console.log(err.message));
     },
     getDate(data) {
